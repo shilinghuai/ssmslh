@@ -7,6 +7,8 @@ public class SynClassTest {
   public synchronized void method1(){
     ConcurrentHashMap map = new ConcurrentHashMap();
     HashMap hashMap = new HashMap();
+    Object o = new Object();
+
     int x = 0;
     int y;
     y = x++ + x++;
