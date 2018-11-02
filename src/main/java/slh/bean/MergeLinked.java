@@ -21,18 +21,7 @@ public class MergeLinked {
 //        }
 //      }
 //    }
-    while (myLinkNodeA.next!=null&myLinkNodeB.next!=null){
-      if(myLinkNodeA.data<myLinkNodeB.data){
-        myLinkNodeA = myLinkNodeA.next;
-      }else if(myLinkNodeA.data==myLinkNodeB.data){
-        myLinkNodeA = myLinkNodeA.next;
-        myLinkNodeB = myLinkNodeB.next;
-        myLinkNodeA.next=headNode.next;
-        headNode.next=myLinkNodeA;
-      }else {
-        myLinkNodeB = myLinkNodeB.next;
-      }
-    }
+    myLinkNodeB.data = 111;
     return headNode;
   }
   public static void main(String[] args){
