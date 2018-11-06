@@ -71,7 +71,7 @@ public class MyMaze {
     MyStack.locations[++MyStack.top]=location;
   }
   static Location pop(){
-    return MyStack.locations[--MyStack.top];
+    return MyStack.locations[MyStack.top--];
   }
   static Location move(Location location,int z){
     if(z==0){
