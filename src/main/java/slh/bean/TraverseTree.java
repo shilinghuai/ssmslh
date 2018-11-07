@@ -102,14 +102,74 @@ public class TraverseTree {
     }
   }
 
+  /**
+   * 二叉排序树began
+   */
+  static TreeNode binaryTreeRoot = new TreeNode(50,null,null);
+  static void insertNode(TreeNode treeNode){
+    //如果根节点为null，数据存入根节点里
+    //如果根节点不为null，数据和根节点的数据比较，如果小的话，查看根节点的左子树是否为空，为null的
+    //的话可以存入，不为null的话，把此节点再进行比较。如果大的话，查看根节点的右子树是否为空，为null的
+    //话可以存入，不为null的话，把此节点再进行比较。
+    TreeNode repaleRoot = binaryTreeRoot;
+    while (repaleRoot!=null){
+      if (treeNode.data > repaleRoot.data) {
+        if (repaleRoot.rTreeNode == null) {
+          repaleRoot.rTreeNode = treeNode;
+          repaleRoot = null;
+        } else {
+          repaleRoot = repaleRoot.rTreeNode;
+        }
+      }else {
+        if(repaleRoot.lTreeNode == null){
+          repaleRoot.lTreeNode = treeNode;
+          repaleRoot = null;
+        }else {
+          repaleRoot = repaleRoot.lTreeNode;
+        }
+      }
+    }
+
+  }
+  static TreeNode findNode(int ia){
+    //临时节点= 根节点。如果临时节点不为null，和临时节点的数据比较，如果大于临时节点的数据，
+    // 则查看临时节点是否有右孩子节点，如果没有返回无此数据，如果有，临时节点就等于该临时
+    // 节点的右孩子。
+    //以上想法太过详细
+    //和根节点比较，如果大于根节点就去和根节点的右孩子比较。如果小于根节点就去根节点的
+    //的左孩子进行比较。
+    //
+    TreeNode repaleRoot = binaryTreeRoot;
+    while (repaleRoot!=null){
+      if(ia>repaleRoot.data){
+        repaleRoot = repaleRoot.rTreeNode;
+      }else if(ia==repaleRoot.data){
+        return repaleRoot;
+      }else {
+        repaleRoot= repaleRoot.lTreeNode;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * 二叉排序树End
+   */
   public static void main(String[] args){
     //traverseTree(treeNode8);
     //非遍历方式实现中序遍历
     System.out.println("----");
     //notRecursionMiddle(treeNode8);
     //notRecursionFrist(treeNode8);
-    notRecursionEnd(treeNode8);
-
+    //notRecursionEnd(treeNode8);
+    //二叉排序树插入数据
+    insertNode(treeNode1);
+    insertNode(treeNode2);
+    insertNode(treeNode3);
+    insertNode(treeNode4);
+    insertNode(treeNode5);
+    TreeNode t = findNode(5);
+    System.out.println(t.data+"<----");
   }
 
 
