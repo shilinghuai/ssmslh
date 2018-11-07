@@ -2,12 +2,31 @@ package slh.bean;
 
 public class Test {
   private String test;
+  class Student{
+    int age;
+    String name;
 
+    public Student(int age, String name) {
+      this.age = age;
+      this.name = name;
+    }
+  }
   public String getTest() {
     return test;
   }
 
   public void setTest(String test) {
     this.test = test;
+  }
+  Student change(Student s){
+    Student studentTmp = s;
+    s = new Student(1,"LISI");
+    return s;
+  }
+  public static void main(String[] args){
+    Test test = new Test();
+    Test.Student s = test.new Student(11,"libai");
+    System.out.println(test.change(s).age+"---");
+
   }
 }
