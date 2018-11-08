@@ -27,6 +27,8 @@ public class Test {
     Test test = new Test();
     Test.Student s = test.new Student(11,"libai");
     System.out.println(test.change(s).age+"---");
+    int[] ia = new int[2];
+
 
   }
 }
