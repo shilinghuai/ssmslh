@@ -16,7 +16,7 @@ public class TestController {
   HttpServletRequest request;
   @Autowired
   private ITestDAO itestDAO;
-  @RequestMapping(value = "/test1" , method = RequestMethod.GET)
+  @RequestMapping(value = "/test1")
   public void test(){
     Test test = itestDAO.getByIPName();
     System.out.println(getRequest());
