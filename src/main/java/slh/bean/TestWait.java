@@ -1,24 +1,25 @@
 package slh.bean;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 public class TestWait {
+  ConcurrentHashMap map;
+  static Object o = new Object();
   int ia = -1 ;
-  boolean workToDo;
+  boolean workToDo = true;
   public void consume(){
     System.out.println("进入消费者方法");
     new Thread(new Runnable() {
       public void run() {
-        synchronized (this){
-          while(!workToDo){
+        synchronized (o){
+          System.out.println(this);
+          while(workToDo){
             try {
-              this.wait();
+              o.wait();
               System.out.println("货物消费完了，消费者被阻塞了");
             } catch (InterruptedException e) {
               e.printStackTrace();
             }
-            workToDo = false;
-          }
-          while(ia>=-20){
-            ia--;
           }
         }
       }
@@ -28,22 +29,22 @@ public class TestWait {
     System.out.println("进入生产者方法");
     new Thread(new Runnable() {
       public void run() {
-        synchronized (this){
-          if(!workToDo){
-            workToDo = true;
-          }
+        synchronized (o){
+          System.out.println(this);
           try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
           } catch (InterruptedException e) {
             e.printStackTrace();
           }
-          this.notifyAll();
+          o.notifyAll();
         }
       }
     }).start();
   }
 
   public static void main(String[] args){
+    ConcurrentHashMap map = new ConcurrentHashMap();
+    map.put("xx","sss");
     TestWait testWait = new TestWait();
     testWait.consume();
     testWait.produce();
