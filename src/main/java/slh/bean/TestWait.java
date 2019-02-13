@@ -3,9 +3,7 @@ package slh.bean;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TestWait {
-  ConcurrentHashMap map;
   static Object o = new Object();
-  int ia = -1 ;
   boolean workToDo = true;
   public void consume(){
     System.out.println("进入消费者方法");
