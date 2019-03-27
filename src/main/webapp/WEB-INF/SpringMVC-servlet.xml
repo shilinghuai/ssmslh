@@ -13,6 +13,6 @@
   <context:component-scan base-package="slh"/>
 
 
-
+  <mvc:annotation-driven/>
 
 </beans>

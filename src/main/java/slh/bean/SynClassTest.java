@@ -1,46 +1,33 @@
 package slh.bean;
 
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
-
 public class SynClassTest {
   public synchronized void method1(){
-    ConcurrentHashMap map = new ConcurrentHashMap();
-    HashMap hashMap = new HashMap();
-    Object o = new Object();
-
-    int x = 0;
-    int y;
-    y = x++ + x++;
-    System.out.println(y);
-    System.out.println("hello method1");
     System.out.println("hello method1");
     try {
-      Thread.sleep(100000);
+      wait();
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-
+    System.out.print("这个线程被唤醒了");
   }
   public synchronized void method2(){
-    System.out.println("hello world 2");
-    System.out.println("hello method1");
-
+    System.out.println("hello method2");
+    try {
+      Thread.sleep(5000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    notifyAll();
   }
   public void thread1(){
     new Thread(new Runnable() {
       public void run() {
         System.out.println("进入线程1");
         method1();
-      }
+        }
     }).start();
   }
   public void thread2(){
-    try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
     new Thread(new Runnable() {
       public void run() {
         System.out.println("jinruxianchenger22");
@@ -52,8 +39,5 @@ public class SynClassTest {
     SynClassTest test = new SynClassTest();
     test.thread1();
     test.thread2();
-    int ia = 1;
-    ia++;
-
   }
 }

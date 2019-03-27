@@ -4,6 +4,25 @@ import java.util.HashMap;
 
 public class Test {
   private String test;
+  private String title;
+  private String author;
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(String author) {
+    this.author = author;
+  }
+
   class Student{
     int age;
     String name;
@@ -30,12 +49,16 @@ public class Test {
     return s;
   }
   public static void main(String[] args){
-    Test test = new Test();
-    Test.Student s = test.new Student(11,"libai");
-    System.out.println(test.change(s).age+"---");
-    int[] ia = new int[2];
-    HashMap<String,String> m = new HashMap<String, String>();
-    int i = 1;
+
+//    Test test = new Test();
+//    Test.Student s = test.new Student(11,"libai");
+//    System.out.println(test.change(s).age+"---");
+//    int[] ia = new int[2];
+//    HashMap<String,String> m = new HashMap<String, String>();
+//    int i = 1;
+    while (true){
+      new HashMap<String,String>();
+    }
   }
 
 }
